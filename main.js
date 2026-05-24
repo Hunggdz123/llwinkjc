@@ -25,11 +25,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const cards = document.querySelectorAll('.service-card');
         cards.forEach(card => {
             card.style.cursor = 'pointer';
-            card.addEventListener('touchstart', function() {
-                this.style.transform = 'scale(0.98)';
+            card.addEventListener('touchstart', function(e) {
+                this.classList.add('pressed');
+            }, {passive: true});
+            card.addEventListener('touchend', function(e) {
+                this.classList.remove('pressed');
             });
-            card.addEventListener('touchend', function() {
-                this.style.transform = 'scale(1)';
+            card.addEventListener('touchcancel', function() {
+                this.classList.remove('pressed');
             });
         });
     }
