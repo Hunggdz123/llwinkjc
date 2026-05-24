@@ -61,6 +61,7 @@
             max-width: 1200px; 
             margin: 0 auto; 
             padding: 32px 48px 64px;
+            margin-top: -100px;
             position: relative;
             z-index: 2;
         }
@@ -87,8 +88,14 @@
             gap: 36px;
             width: 100%;
             max-width: 100%;
-            margin: -150px auto 0;
+            margin: 0 auto 0;
             align-items: start;
+        }
+
+        .banner-wrapper {
+            margin-top: -70px;
+            padding: 0 16px 32px;
+            text-align: center;
         }
 
         .service-card {
@@ -224,6 +231,10 @@
             }
             .container {
                 padding: 24px 32px 48px;
+                margin-top: -80px;
+            }
+            .banner-wrapper {
+                margin-top: -50px;
             }
             .circle-wrapper {
                 width: 134px;
@@ -242,6 +253,30 @@
                 padding: 36px 18px 48px;
             }
         }
+            .hero-image {
+    margin-top: 100px !important;
+}
+
+/* Hero image: default and responsive sizes */
+.hero-img {
+    width: 60%;
+    max-width: 560px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+.services {
+    margin-top: -10px !important;
+}
+/* Keep original lifted layout on large desktops only */
+@media (min-width: 1201px) {
+    .services {
+        margin: -150px auto 0;
+    }
+    .banner-wrapper {
+        margin-top: -140px;
+    }
+}
 
         /* Responsive - Tablet */
         @media (max-width: 768px) {
@@ -296,12 +331,19 @@
                 max-width: 200px;
                 padding-top: 12px;
             }
+            /* Use 2 columns on typical phones to match provided design */
             .services { 
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
                 gap: 12px;
+                margin: 0 auto 0;
             }
             .container {
                 padding: 12px 10px 24px;
+                margin-top: -56px;
+            }
+            .banner-wrapper {
+                margin-top: -26px;
+                padding: 0 10px 24px;
             }
             .section-title {
                 font-size: 1.12rem;
@@ -337,6 +379,11 @@
                 font-size: 0.72rem;
                 margin-top: 10px;
             }
+            /* Shrink hero image on small screens */
+            .hero-img {
+                width: 78%;
+                max-width: 240px;
+            }
         }
 
         /* Responsive - Small Mobile */
@@ -370,5 +417,59 @@
             .service-card h3 {
                 font-size: 0.68rem;
             }
-        }
-        
+
+
+/* Ensure hero image and banner spacing are responsive (removed inline negative margins) */
+.hero-img {
+    filter: drop-shadow(0 4px 15px rgba(255,215,0,0.4));
+    transform: scale(0.67);
+    max-width: 80%;
+    width: auto;
+    display: inline-block;
+}
+.banner-img {
+    max-width: 32%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Prevent hover transforms on touch devices; use a pressed class instead */
+.touch-device .service-card:hover {
+    transform: none;
+}
+.service-card.pressed {
+    transform: scale(0.98);
+    transition: transform 0.12s ease;
+}
+
+/* Mobile overrides to prevent layout jumps from negative margins */
+@media (max-width: 768px) {
+    .services { 
+        margin: 0 auto 0;
+    }
+    .banner-img {
+        max-width: 45%;
+    }
+    .hero-img {
+        transform: scale(0.85);
+        max-width: 95%;
+    }
+}
+
+@media (max-width: 480px) {
+    .services { 
+        margin: 0 auto 0;
+        gap: 14px;
+    }
+            .container {
+                margin-top: -44px;
+            }
+    .banner-img {
+        max-width: 60%;
+    }
+    .hero-img {
+        transform: scale(0.95);
+        max-width: 95%;
+    }
+}}
